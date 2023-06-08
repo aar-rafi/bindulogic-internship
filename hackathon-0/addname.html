@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- <link rel="stylesheet" type="text/css" href="./style.css" /> -->
+    <style>
+      body {
+        background-color: lightgreen;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 35px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      label {
+        margin-bottom: 10px;
+      }
+
+      input[type="text"] {
+        width: 250px;
+        padding: 5px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        margin-left: 10px;
+      }
+
+      button[type="submit"] {
+        padding: 8px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+    <title>Add Text Box</title>
+    <script>
+      function redirectToRoute1() {
+        var textboxValue = document.getElementById("textbox").value;
+        if (textboxValue.trim() !== "") {
+          window.location.href =
+            "/route1?textbox=" + encodeURIComponent(textboxValue);
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var form = document.getElementById("textbox-form");
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          redirectToRoute2();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Add Name</h1>
+    <form id="textbox-form">
+      <label for="textbox">Add Text:</label>
+      <input type="text" id="textbox" name="textbox" />
+      <button type="submit" onclick="redirectToRoute1()">Add</button>
+    </form>
+  </body>
+</html>
